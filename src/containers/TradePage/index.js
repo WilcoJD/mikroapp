@@ -7,7 +7,7 @@ class TradePage extends Component {
   render() {
     return (
       <Layout>
-        <Typography variant="h4" style={{padding: 40}}>Trades coming soon!</Typography>
+        <Typography variant="h4" style={{padding: 40}}>Trades coming really soon!</Typography>
       </Layout>
     );
   }
