@@ -90,6 +90,7 @@ function mapStateToProps(state) {
     activeWallet: state.wallet.activeWallet,
     depositHistory: state.history.deposits,
     withdrawHistory: state.history.withdraws,
+    tradesHistory: state.history.trades,
     rid: state.withdraw.rid,
     amount: state.withdraw.amount,
     otp: state.withdraw.otp,

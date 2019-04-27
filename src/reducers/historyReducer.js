@@ -8,6 +8,7 @@ const initState = {
   isFetching: false,
   deposits: [],
   withdraws: [],
+  trades: [],
   error: false,
 };
 

@@ -11,6 +11,11 @@ export const getWithdrawHistory = id => {
     .then(response => response.data);
 };
 
+export const getTradesHistory = () => {
+  return axiosInstance.get('/api/v2/peatio//market/trades')
+    .then(response => response.data);
+};
+
 export const getHistory = async id => {
-  return await Promise.all([getDepositHistory(id), getWithdrawHistory(id)]);
+  return await Promise.all([getDepositHistory(id), getWithdrawHistory(id), getTradesHistory()]);
 };

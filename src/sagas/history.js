@@ -2,8 +2,8 @@ import { call, put, takeLatest, select } from 'redux-saga/effects';
 import moment from 'moment';
 import * as actions from '../actions/history';
 import * as types from '../constants/actions';
-import { DEPOSITS_HISTORY_TYPE, WITHDRAWS_HISTORY_TYPE } from '../constants/history';
-import { getDepositHistory, getWithdrawHistory } from '../api/history';
+import { DEPOSITS_HISTORY_TYPE, WITHDRAWS_HISTORY_TYPE, TRADES_HISTORY_TYPE } from '../constants/history';
+import { getDepositHistory, getWithdrawHistory, getTradesHistory } from '../api/history';
 
 function updateTime(list) {
   return list.map(item => ({
@@ -35,7 +35,18 @@ export function* fetchWithdrawsHistory() {
   }
 }
 
+export function* fetchTradesHistory() {
+  try {
+    const trades = updateTime(yield call(getTradesHistory));
+
+    yield put(actions.successHistory(TRADES_HISTORY_TYPE, trades));
+  } catch (e) {
+    yield put(actions.failHistory());
+  }
+}
+
 export function* fetchHistorySaga() {
   yield takeLatest(types.FETCH_HISTORY, fetchDepositsHistory);
   yield takeLatest(types.FETCH_HISTORY, fetchWithdrawsHistory);
+  yield takeLatest(types.FETCH_HISTORY, fetchTradesHistory);
 }
