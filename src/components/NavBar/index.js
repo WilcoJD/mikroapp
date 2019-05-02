@@ -93,13 +93,30 @@ class NavBar extends Component {
             </Hidden>
             <div className={classes.grow} />
             <Hidden xsDown implementation="js">
-              <Tabs value={location.pathname === '/trade' ? 0 : (
-                location.pathname.indexOf('/wallets') >= 0 ? 1 : undefined
-              )} classes={{
+              <Tabs value=
+                {
+                  {
+                    '/trade': (
+                      2
+                    ),
+                    '/markets': (
+                      0
+                    ),
+                    '/wallets': (
+                      1
+                    ),
+                    default: (
+                      0
+                    )
+                  }[location.pathname]
+                }
+              classes={{
                 flexContainer: classes.tabsFlexContainer
               }}>
-                <Tab label="TRADE" component={Link} to="/trade" />
+
+                <Tab label="MARKETS" component={Link} to="/markets" />
                 <Tab label="WALLETS" component={Link} to="/wallets" />
+                {/*<Tab label="TRADE" component={Link} to="/trade" />*/}
               </Tabs>
               <Avatar
                 aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -117,8 +134,9 @@ class NavBar extends Component {
             open={Boolean(menuAnchorEl)}
             onClose={this.handleClose}
           >
-            <Link to="/trade"><MenuItem>TRADE</MenuItem></Link>
+            {/*<Link to="/trade"><MenuItem>TRADE</MenuItem></Link>*/}
             <Link to="/wallets"><MenuItem>WALLETS</MenuItem></Link>
+            <Link to="/markets"><MenuItem>MARKETS</MenuItem></Link>
           </Menu>
           <Menu
             id="simple-menu"

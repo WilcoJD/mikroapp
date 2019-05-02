@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import WalletPage from './WalletPage';
 import TradePage from './TradePage';
+import MarketsPage from './MarketsPage';
 import LoginPage from './LoginPage';
 import actions from "../actions";
 import PrivateRoute from '../components/PrivateRoute';
@@ -42,6 +43,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginPage}/>
           <PrivateRoute path="/wallets" component={WalletPage} isAuthenticated={isAuthenticated} isLoading={isFetching}/>
           <PrivateRoute path="/trade" component={TradePage} isAuthenticated={isAuthenticated} isLoading={isFetching}/>
+          <PrivateRoute path="/markets" component={MarketsPage} isAuthenticated={isAuthenticated} isLoading={isFetching}/>
         </Switch>
       </MuiThemeProvider>
     );

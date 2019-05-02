@@ -25,3 +25,7 @@ export const FETCH_LOGOUT = 'auth/FETCH_LOGOUT';
 export const FAIL_LOGOUT = 'auth/FAIL_LOGOUT';
 export const FETCH_LOGIN = 'auth/FETCH_LOGIN';
 export const FAIL_LOGIN = 'auth/FAIL_LOGIN';
+
+export const FETCH_MARKETS = 'exchange/FETCH_MARKETS';
+export const SUCCESS_MARKETS = 'exchange/SUCCESS_MARKETS';
+export const FAIL_MARKETS = 'exchange/SUCCESS_MARKETS';

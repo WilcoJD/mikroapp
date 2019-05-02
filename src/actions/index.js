@@ -4,6 +4,7 @@ import * as walletActions from './wallet';
 import * as historyActions from './history';
 import * as withdrawActions from './withdraw';
 import * as authActions from './auth';
+import * as exchangeActions from './exchange';
 
 export default dispatch => ({
   actions: bindActionCreators({
@@ -12,5 +13,6 @@ export default dispatch => ({
     ...walletActions,
     ...withdrawActions,
     ...authActions,
+    ...exchangeActions,
   }, dispatch)
 });

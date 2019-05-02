@@ -6,7 +6,7 @@ import { fetchLogout } from '../actions/auth';
 
 const axiosInstance = axios.create({
   baseURL: host,
-  //withCredentials: true,
+  withCredentials: true,
 });
 
 
