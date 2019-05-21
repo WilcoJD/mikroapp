@@ -5,27 +5,27 @@ import NavBar from '../../components/NavBar';
 
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  toolbar: theme.mixins.toolbar
+    root: {
+        display: 'flex',
+    },
+    toolbar: theme.mixins.toolbar
 });
 
 class Layout extends Component {
-  render() {
-    const { classes, children } = this.props;
+    render() {
+        const { classes, children } = this.props;
 
-    return (
-      <Fragment>
-        <NavBar/>
-        <div className={classes.toolbar} />
-        <div className={classes.root}>
-          <CssBaseline />
-          { children }
-        </div>
-      </Fragment>
-    );
-  }
+        return (
+            <Fragment>
+                <NavBar/>
+                <div className={classes.toolbar} />
+                <div className={classes.root}>
+                    <CssBaseline />
+                    { children }
+                </div>
+            </Fragment>
+        );
+    }
 }
 
 export default withStyles(styles)(Layout);

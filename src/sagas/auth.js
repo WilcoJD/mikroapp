@@ -8,30 +8,30 @@ import { fetchUser } from './user';
 
 
 export function* fetchLogout() {
-  try {
-    yield call(logoutUser);
-    sessionStorage.clear();
-    yield put(userActions.resetUser());
-  } catch (e) {
-    yield put(actions.failLogout('Oups! Error occurs, please try again later.'));
-  }
+    try {
+        yield call(logoutUser);
+        sessionStorage.clear();
+        yield put(userActions.resetUser());
+    } catch (e) {
+        yield put(actions.failLogout('Oups! Error occurs, please try again later.'));
+    }
 }
 
 export function* fetchLogoutSaga() {
-  yield takeEvery(types.FETCH_LOGOUT, fetchLogout);
+    yield takeEvery(types.FETCH_LOGOUT, fetchLogout);
 }
 
 
 export function* fetchLogin({ payload: { email, password } }) {
-  try {
-    yield call(loginUser, email, password);
-    yield call(fetchUser);
-    yield put(push('/wallets'));
-  } catch (e) {
-    yield put(actions.failLogin('Oups! Error occurs, please try again later.'));
-  }
+    try {
+        yield call(loginUser, email, password);
+        yield call(fetchUser);
+        yield put(push('/wallets'));
+    } catch (e) {
+        yield put(actions.failLogin('Oups! Error occurs, please try again later.'));
+    }
 }
 
 export function* fetchLoginSaga() {
-  yield takeEvery(types.FETCH_LOGIN, fetchLogin);
+    yield takeEvery(types.FETCH_LOGIN, fetchLogin);
 }

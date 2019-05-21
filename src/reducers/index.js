@@ -10,11 +10,11 @@ import marketsReducer from './exchange';
 
 
 export default combineReducers({
-  wallet: walletReducer,
-  user: userReducer,
-  history: historyReducer,
-  withdraw: withdrawReducer,
-  auth: authReducer,
-  markets: marketsReducer,
-  router: connectRouter(history)
+    wallet: walletReducer,
+    user: userReducer,
+    history: historyReducer,
+    withdraw: withdrawReducer,
+    auth: authReducer,
+    markets: marketsReducer,
+    router: connectRouter(history)
 });

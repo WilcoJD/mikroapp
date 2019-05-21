@@ -6,47 +6,47 @@ import { DEPOSITS_HISTORY_TYPE, WITHDRAWS_HISTORY_TYPE, TRADES_HISTORY_TYPE } fr
 import { getDepositHistory, getWithdrawHistory, getTradesHistory } from '../api/history';
 
 function updateTime(list) {
-  return list.map(item => ({
-    ...item,
-    created_at: moment.utc(item.created_at).format('DD MMM YYYY')
-  }));
+    return list.map(item => ({
+        ...item,
+        created_at: moment.utc(item.created_at).format('DD MMM YYYY')
+    }));
 }
 
 // Saga get history according to type
 export function* fetchDepositsHistory() {
-  try {
-    const id = yield select(state => state.wallet.activeWallet);
-    const deposits = updateTime(yield call(getDepositHistory, id));
+    try {
+        const id = yield select(state => state.wallet.activeWallet);
+        const deposits = updateTime(yield call(getDepositHistory, id));
 
-    yield put(actions.successHistory(DEPOSITS_HISTORY_TYPE, deposits));
-  } catch (e) {
-    yield put(actions.failHistory());
-  }
+        yield put(actions.successHistory(DEPOSITS_HISTORY_TYPE, deposits));
+    } catch (e) {
+        yield put(actions.failHistory());
+    }
 }
 
 export function* fetchWithdrawsHistory() {
-  try {
-    const id = yield select(state => state.wallet.activeWallet);
-    const withdraws = updateTime(yield call(getWithdrawHistory, id));
+    try {
+        const id = yield select(state => state.wallet.activeWallet);
+        const withdraws = updateTime(yield call(getWithdrawHistory, id));
 
-    yield put(actions.successHistory(WITHDRAWS_HISTORY_TYPE, withdraws));
-  } catch (e) {
-    yield put(actions.failHistory());
-  }
+        yield put(actions.successHistory(WITHDRAWS_HISTORY_TYPE, withdraws));
+    } catch (e) {
+        yield put(actions.failHistory());
+    }
 }
 
 export function* fetchTradesHistory() {
-  try {
-    const trades = updateTime(yield call(getTradesHistory));
+    try {
+        const trades = updateTime(yield call(getTradesHistory));
 
-    yield put(actions.successHistory(TRADES_HISTORY_TYPE, trades));
-  } catch (e) {
-    yield put(actions.failHistory());
-  }
+        yield put(actions.successHistory(TRADES_HISTORY_TYPE, trades));
+    } catch (e) {
+        yield put(actions.failHistory());
+    }
 }
 
 export function* fetchHistorySaga() {
-  yield takeLatest(types.FETCH_HISTORY, fetchDepositsHistory);
-  yield takeLatest(types.FETCH_HISTORY, fetchWithdrawsHistory);
-  yield takeLatest(types.FETCH_HISTORY, fetchTradesHistory);
+    yield takeLatest(types.FETCH_HISTORY, fetchDepositsHistory);
+    yield takeLatest(types.FETCH_HISTORY, fetchWithdrawsHistory);
+    yield takeLatest(types.FETCH_HISTORY, fetchTradesHistory);
 }

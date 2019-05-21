@@ -15,16 +15,16 @@ const styles = theme => ({
     }
 });
 
-class HistoryTable extends Component {
+class Market extends Component {
     render() {
-        const { classes, history } = this.props;
+        const { classes, order_book, market } = this.props;
 
         return (
             <Fragment>
                 <Grid container>
                     <Grid item xs={11}>
                         <Typography variant="h4" classes={{h4: classes.allActionText}} gutterBottom>
-              History
+                            {'Order Book for ' + market}
                         </Typography>
                     </Grid>
                 </Grid>
@@ -32,28 +32,18 @@ class HistoryTable extends Component {
                     <TableHead>
                         <TableRow>
                             <TableCell padding="none">Date</TableCell>
-                            <TableCell padding="none" numeric>Status</TableCell>
-                            <TableCell padding="none" numeric>Amount</TableCell>
-                            <TableCell padding="none" numeric>Balance</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {
-                            history.map((data, index) => (
-                                <TableRow key={index}>
-                                    <TableCell padding="none">{data.created_at}</TableCell>
-                                    <TableCell padding="none" numeric>{data.state}</TableCell>
-                                    <TableCell padding="none" numeric>{data.amount}</TableCell>
-                                    <TableCell padding="none" numeric>TODO</TableCell>
-                                </TableRow>
-                            ))
-                        }
+                        <TableRow>
+                            <TableCell padding="none">Some</TableCell>
+                        </TableRow>
                     </TableBody>
                 </Table>
-                { !history.length && <Typography variant="h6" align="center">Empty history</Typography> }
             </Fragment>
+            // {/*<Typography variant="h4" style={{padding: 40}}>{market + ' in process'}</Typography>*/}
         );
     }
 }
 
-export default withStyles(styles)(HistoryTable);
+export default withStyles(styles)(Market);

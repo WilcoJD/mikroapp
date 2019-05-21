@@ -10,38 +10,38 @@ import { fetchHistory } from '../../actions/history';
 
 
 class TradePage extends Component {
-  componentDidMount() {
-    this.props.fetchHistory();
-  }
+    componentDidMount() {
+        this.props.fetchHistory();
+    }
 
-  render() {
-    const {
-      tradesHistory
-    } = this.props;
+    render() {
+        const {
+            tradesHistory
+        } = this.props;
 
-    return (
-      <Layout>
-        <div style={{width: '100%', padding: '5%'}}>
-          <TradesHistory history={tradesHistory} />
-        </div>
-      </Layout>
-    );
-  }
+        return (
+            <Layout>
+                <div style={{width: '100%', padding: '5%'}}>
+                    <TradesHistory history={tradesHistory} />
+                </div>
+            </Layout>
+        );
+    }
 }
 
 function mapStateToProps(state) {
-  return {
-    tradesHistory: state.history.trades
-  };
+    return {
+        tradesHistory: state.history.trades
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    fetchHistory: () => dispatch(fetchHistory())
-  };
+    return {
+        fetchHistory: () => dispatch(fetchHistory())
+    };
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withRouter
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter
 )(TradePage);

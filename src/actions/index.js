@@ -7,12 +7,12 @@ import * as authActions from './auth';
 import * as exchangeActions from './exchange';
 
 export default dispatch => ({
-  actions: bindActionCreators({
-    ...historyActions,
-    ...userActions,
-    ...walletActions,
-    ...withdrawActions,
-    ...authActions,
-    ...exchangeActions,
-  }, dispatch)
+    actions: bindActionCreators({
+        ...historyActions,
+        ...userActions,
+        ...walletActions,
+        ...withdrawActions,
+        ...authActions,
+        ...exchangeActions,
+    }, dispatch)
 });

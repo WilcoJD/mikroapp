@@ -29,3 +29,7 @@ export const FAIL_LOGIN = 'auth/FAIL_LOGIN';
 export const FETCH_MARKETS = 'exchange/FETCH_MARKETS';
 export const SUCCESS_MARKETS = 'exchange/SUCCESS_MARKETS';
 export const FAIL_MARKETS = 'exchange/SUCCESS_MARKETS';
+
+export const FETCH_MARKET_ORDER_BOOK = 'exchange/FETCH_MARKET_ORDER_BOOK';
+export const SUCCESS_MARKET_ORDER_BOOK = 'exchange/SUCCESS_MARKET_ORDER_BOOK';
+export const FAIL_MARKET_ORDER_BOOK = 'exchange/SUCCESS_MARKET_ORDER_BOOK';

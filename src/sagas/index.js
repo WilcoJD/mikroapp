@@ -8,15 +8,15 @@ import { fetchMarketsSaga } from './exchange';
 
 
 export default function* rootSaga() {
-  yield all([
-    fetchUserSaga(),
-    fetchWalletSaga(),
-    setActiveWalletSaga(),
-    fetchWalletAddressSaga(),
-    fetchHistorySaga(),
-    fetchSubmitWithdrawSaga(),
-    fetchLogoutSaga(),
-    fetchLoginSaga(),
-    fetchMarketsSaga(),
-  ]);
+    yield all([
+        fetchUserSaga(),
+        fetchWalletSaga(),
+        setActiveWalletSaga(),
+        fetchWalletAddressSaga(),
+        fetchHistorySaga(),
+        fetchSubmitWithdrawSaga(),
+        fetchLogoutSaga(),
+        fetchLoginSaga(),
+        fetchMarketsSaga(),
+    ]);
 }

@@ -5,14 +5,14 @@ import { getUser } from '../api/user';
 
 
 export function* fetchUser() {
-  try {
-    const user = yield call(getUser);
-    yield put(actions.successUser(user));
-  } catch (e) {
-    yield put(actions.failUser());
-  }
+    try {
+        const user = yield call(getUser);
+        yield put(actions.successUser(user));
+    } catch (e) {
+        yield put(actions.failUser());
+    }
 }
 
 export function* fetchUserSaga() {
-  yield takeEvery(types.FETCH_USER, fetchUser);
+    yield takeEvery(types.FETCH_USER, fetchUser);
 }

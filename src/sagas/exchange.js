@@ -5,14 +5,25 @@ import { getMarkets } from '../api/exchange';
 
 
 export function* fetchMarkets() {
-  try {
-    const markets = yield call(getMarkets);
-    yield put(actions.successMarkets(markets));
-  } catch (e) {
-    yield put(actions.failMarkets());
-  }
+    try {
+        const markets = yield call(getMarkets);
+        yield put(actions.successMarkets(markets));
+    } catch (e) {
+        yield put(actions.failMarkets());
+    }
+}
+
+export function* fetchMarketOrderBook(market) {
+    try {
+        const order_book = yield call(fetchMarketOrderBook, market);
+
+        yield put(actions.successMarketOrderBook(market, order_book));
+    } catch (e) {
+        yield put(actions.failMarketOrderBook(market));
+    }
 }
 
 export function* fetchMarketsSaga() {
-  yield takeEvery(types.FETCH_MARKETS, fetchMarkets);
+    yield takeEvery(types.FETCH_MARKETS, fetchMarkets);
+    yield takeEvery(types.FETCH_MARKET_ORDER_BOOK, fetchMarketOrderBook);
 }
