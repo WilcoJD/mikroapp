@@ -19,29 +19,42 @@ class Market extends Component {
     render() {
         const { classes, order_book, market } = this.props;
 
+        const market_fixed = market !== undefined ? market : 'unknown market';
+        const order_book_fixed = order_book !== undefined ? order_book : {};
+
         return (
             <Fragment>
                 <Grid container>
                     <Grid item xs={11}>
-                        <Typography variant="h4" classes={{h4: classes.allActionText}} gutterBottom>
-                            {'Order Book for ' + market}
-                        </Typography>
+                        <Typography variant="h4" classes={{h4: classes.allActionText}} gutterBottom>{'Order Book for ' + market_fixed}</Typography>
                     </Grid>
                 </Grid>
-                <Table className={classes.table}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell padding="none">Date</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell padding="none">Some</TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
+                {
+                    Object.keys(order_book_fixed).map((key, ind) => (
+                        <div key={ind}>
+                            <Typography variant="h5" align="center">{key.toUpperCase()}</Typography>
+                            <Table className={classes.table}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell padding="none">ID</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        order_book_fixed[key].map((data, index) => (
+                                            <TableRow key={index}>
+                                                <TableCell padding="none">{data.id}</TableCell>
+                                            </TableRow>
+                                        ))
+                                    }
+                                </TableBody>
+                            </Table>
+                            <br/>
+                        </div>
+                    ))
+                }
+                {!Object.keys(order_book_fixed).length && <Typography variant="h6" align="center">Order book not loaded</Typography>}
             </Fragment>
-            // {/*<Typography variant="h4" style={{padding: 40}}>{market + ' in process'}</Typography>*/}
         );
     }
 }

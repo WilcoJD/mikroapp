@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import MarketsList from '../../components/Markets/MarketsList';
 import { fetchMarkets } from '../../actions/exchange';
 import Typography from '@material-ui/core/Typography';
-import Market from '../../components/Markets/Market';
 
 
 class MarketsPage extends Component {

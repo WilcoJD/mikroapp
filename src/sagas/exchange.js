@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import * as actions from '../actions/exchange';
 import * as types from '../constants/actions';
-import { getMarkets } from '../api/exchange';
+import { getMarkets, getMarketOrderBook } from '../api/exchange';
 
 
 export function* fetchMarkets() {
@@ -13,9 +13,9 @@ export function* fetchMarkets() {
     }
 }
 
-export function* fetchMarketOrderBook(market) {
+export function* fetchMarketOrderBook({ payload: { market } }) {
     try {
-        const order_book = yield call(fetchMarketOrderBook, market);
+        const order_book = yield call(getMarketOrderBook, market);
 
         yield put(actions.successMarketOrderBook(market, order_book));
     } catch (e) {

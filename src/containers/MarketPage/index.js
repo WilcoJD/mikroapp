@@ -4,19 +4,15 @@ import { withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
+import Market from '../../components/Markets/Market';
 import { fetchMarketOrderBook } from '../../actions/exchange';
 import Typography from '@material-ui/core/Typography';
-import Market from '../../components/Markets/Market';
 
 
 class MarketPage extends Component {
     componentDidMount() {
         const market = this.props.match.params.market;
         this.props.fetchMarketOrderBook(market);
-    }
-
-    groupBy(xs, f) {
-        return xs.reduce((r, v, i, a, k = f(v)) => ((r[k] || (r[k] = [])).push(v), r), {});
     }
 
     render() {
@@ -45,13 +41,15 @@ class MarketPage extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+    const market = ownProps.match.params.market;
+
     return {
-        order_book: state.markets.market
+        order_book: state.markets[market]
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
     return {
         fetchMarketOrderBook: market => dispatch(fetchMarketOrderBook(market))
     };
